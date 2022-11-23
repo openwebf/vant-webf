@@ -52,7 +52,21 @@
   transition: opacity var(--van-animation-duration-fast);
   -webkit-appearance: none;
 
-  &::before {
+  //&::before {
+  //  position: absolute;
+  //  top: 50%;
+  //  left: 50%;
+  //  width: 100%;
+  //  height: 100%;
+  //  background: var(--van-black);
+  //  border: inherit;
+  //  border-color: var(--van-black);
+  //  border-radius: inherit; /* inherit parent's border radius */
+  //  transform: translate(-50%, -50%);
+  //  opacity: 0;
+  //  content: ' ';
+  //}
+  &__before {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -67,9 +81,12 @@
     content: ' ';
   }
 
-  &:active::before {
+  &__before__active {
     opacity: 0.1;
   }
+  //&:active::before {
+  //  opacity: 0.1;
+  //}
 
   &--loading,
   &--disabled {

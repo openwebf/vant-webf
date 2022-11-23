@@ -1,20 +1,21 @@
 import {
-  defineComponent,
-  type PropType,
   type CSSProperties,
+  defineComponent,
   type ExtractPropTypes,
+  type PropType,
+  ref,
 } from 'vue';
 
 // Utils
 import {
+  BORDER_SURROUND,
+  createNamespace,
   extend,
+  makeStringProp,
   numericProp,
   preventDefault,
-  makeStringProp,
-  createNamespace,
-  BORDER_SURROUND,
 } from '../utils';
-import { useRoute, routeProps } from '../composables/use-route';
+import { routeProps, useRoute } from '../composables/use-route';
 
 // Components
 import { Icon } from '../icon';
@@ -22,10 +23,10 @@ import { Loading, LoadingType } from '../loading';
 
 // Types
 import {
+  ButtonIconPosition,
+  ButtonNativeType,
   ButtonSize,
   ButtonType,
-  ButtonNativeType,
-  ButtonIconPosition,
 } from './types';
 
 const [name, bem] = createNamespace('button');
@@ -63,6 +64,7 @@ export default defineComponent({
 
   setup(props, { emit, slots }) {
     const route = useRoute();
+    const active = ref(false);
 
     const renderLoadingIcon = () => {
       if (slots.loading) {
@@ -111,6 +113,23 @@ export default defineComponent({
       }
     };
 
+    const onTouchend = () => {
+      active.value = false;
+    };
+    const onTouchstart = () => {
+      active.value = true;
+    };
+    const renderBefore = () => (
+      <span
+        onTouchstart={onTouchstart}
+        onTouchend={onTouchend}
+        class={
+          active.value
+            ? `${bem('before')}  ${bem('before__active')}`
+            : bem('before')
+        }
+      ></span>
+    );
     const getStyle = () => {
       const { color, plain } = props;
       if (color) {
@@ -184,6 +203,7 @@ export default defineComponent({
           disabled={disabled}
           onClick={onClick}
         >
+          {renderBefore()}
           <div class={bem('content')}>
             {iconPosition === 'left' && renderIcon()}
             {renderText()}
