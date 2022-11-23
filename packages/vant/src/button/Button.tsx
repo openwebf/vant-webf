@@ -119,17 +119,27 @@ export default defineComponent({
     const onTouchstart = () => {
       active.value = true;
     };
-    const renderBefore = () => (
-      <span
-        onTouchstart={onTouchstart}
-        onTouchend={onTouchend}
-        class={
-          active.value
-            ? `${bem('before')}  ${bem('before__active')}`
-            : bem('before')
-        }
-      ></span>
-    );
+    const renderBefore = () => {
+      if (props.disabled) {
+        return <span />;
+      }
+      return (
+        <span
+          onTouchstart={onTouchstart}
+          onTouchend={onTouchend}
+          class={
+            active.value
+              ? `${bem('before')}  ${bem('before__active')}`
+              : bem('before')
+          }
+        ></span>
+      );
+    };
+    const renderAfter = () => {
+      if (props.hairline) {
+        return <span class={bem('hairline--after')} />;
+      }
+    };
     const getStyle = () => {
       const { color, plain } = props;
       if (color) {
@@ -203,12 +213,13 @@ export default defineComponent({
           disabled={disabled}
           onClick={onClick}
         >
-          {renderBefore()}
           <div class={bem('content')}>
             {iconPosition === 'left' && renderIcon()}
             {renderText()}
             {iconPosition === 'right' && renderIcon()}
           </div>
+          {renderAfter()}
+          {renderBefore()}
         </tag>
       );
     };
