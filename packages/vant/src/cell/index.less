@@ -35,14 +35,18 @@
   line-height: var(--van-cell-line-height);
   background: var(--van-cell-background-color);
 
-  &::after {
+  &__after {
     .hairline-bottom(var(--van-cell-border-color), var(--van-padding-md), var(--van-padding-md));
   }
 
-  &:last-child::after,
-  &--borderless::after {
+  &:last-child > &__after {
     display: none;
   }
+
+  //&:last-child::after,
+  //&--borderless::after {
+  //  display: none;
+  //}
 
   &__label {
     margin-top: var(--van-cell-label-margin-top);
@@ -89,7 +93,7 @@
   &--clickable {
     cursor: pointer;
 
-    &:active {
+    &__active {
       background-color: var(--van-cell-active-color);
     }
   }
@@ -97,7 +101,7 @@
   &--required {
     overflow: visible;
 
-    &::before {
+    &__before {
       position: absolute;
       left: var(--van-padding-xs);
       color: var(--van-cell-required-color);

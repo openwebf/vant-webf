@@ -1,22 +1,23 @@
 import {
-  defineComponent,
-  type PropType,
   type CSSProperties,
+  defineComponent,
   type ExtractPropTypes,
+  type PropType,
+  ref,
 } from 'vue';
 
 // Utils
 import {
-  isDef,
+  createNamespace,
   extend,
+  isDef,
+  numericProp,
   truthProp,
   unknownProp,
-  numericProp,
-  createNamespace,
 } from '../utils';
 
 // Composables
-import { useRoute, routeProps } from '../composables/use-route';
+import { routeProps, useRoute } from '../composables/use-route';
 
 // Components
 import { Icon } from '../icon';
@@ -60,7 +61,7 @@ export default defineComponent({
 
   setup(props, { slots }) {
     const route = useRoute();
-
+    const active = ref(false);
     const renderLabel = () => {
       const showLabel = slots.label || isDef(props.label);
 
@@ -130,7 +131,16 @@ export default defineComponent({
         return <Icon name={name} class={bem('right-icon')} />;
       }
     };
-
+    const renderAfter = () => <span class="van-cell__after" />;
+    const renderBefore = () => (
+      <span class="van-cell--required__before">*</span>
+    );
+    const onTouchend = () => {
+      active.value = false;
+    };
+    const onTouchstart = () => {
+      active.value = true;
+    };
     return () => {
       const { size, center, border, isLink, required } = props;
       const clickable = props.clickable ?? isLink;
@@ -147,16 +157,24 @@ export default defineComponent({
 
       return (
         <div
-          class={bem(classes)}
+          class={
+            active.value
+              ? `van-cell--clickable__active ${bem(classes)}`
+              : bem(classes)
+          }
+          onTouchstart={clickable ? onTouchstart : undefined}
+          onTouchend={clickable ? onTouchend : undefined}
           role={clickable ? 'button' : undefined}
           tabindex={clickable ? 0 : undefined}
           onClick={route}
         >
+          {required && renderBefore()}
           {renderLeftIcon()}
           {renderTitle()}
           {renderValue()}
           {renderRightIcon()}
           {slots.extra?.()}
+          {border && renderAfter()}
         </div>
       );
     };
