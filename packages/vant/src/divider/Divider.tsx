@@ -1,5 +1,5 @@
 import { defineComponent, type ExtractPropTypes } from 'vue';
-import { truthProp, makeStringProp, createNamespace } from '../utils';
+import { createNamespace, makeStringProp, truthProp } from '../utils';
 
 const [name, bem] = createNamespace('divider');
 
@@ -19,6 +19,24 @@ export default defineComponent({
   props: dividerProps,
 
   setup(props, { slots }) {
+    const renderBefore = () => (
+      <span
+        class={[
+          bem('before'),
+          bem(`content-${props.contentPosition}__before`),
+          props.hairline ? bem('hairline__before') : '',
+        ]}
+      ></span>
+    );
+    const renderAfter = () => (
+      <span
+        class={[
+          bem('after'),
+          bem(`content-${props.contentPosition}__after`),
+          props.hairline ? bem('hairline__after') : '',
+        ]}
+      ></span>
+    );
     return () => (
       <div
         role="separator"
@@ -28,7 +46,9 @@ export default defineComponent({
           [`content-${props.contentPosition}`]: !!slots.default,
         })}
       >
+        {renderBefore()}
         {slots.default?.()}
+        {slots.default && renderAfter()}
       </div>
     );
   },
