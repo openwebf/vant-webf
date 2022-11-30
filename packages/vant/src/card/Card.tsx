@@ -1,7 +1,7 @@
 import { defineComponent, type ExtractPropTypes } from 'vue';
 
 // Utils
-import { isDef, numericProp, makeStringProp, createNamespace } from '../utils';
+import { createNamespace, isDef, makeStringProp, numericProp } from '../utils';
 
 // Components
 import { Tag } from '../tag';
@@ -106,11 +106,11 @@ export default defineComponent({
     const renderPriceText = () => {
       const priceArr = props.price!.toString().split('.');
       return (
-        <div>
+        <span style="display:inline-block">
           <span class={bem('price-currency')}>{props.currency}</span>
           <span class={bem('price-integer')}>{priceArr[0]}</span>.
           <span class={bem('price-decimal')}>{priceArr[1]}</span>
-        </div>
+        </span>
       );
     };
 
@@ -120,18 +120,17 @@ export default defineComponent({
       const showOriginPrice = slots['origin-price'] || isDef(props.originPrice);
       const showBottom =
         showNum || showPrice || showOriginPrice || slots.bottom;
-
-      const Price = showPrice && (
-        <div class={bem('price')}>
-          {slots.price ? slots.price() : renderPriceText()}
-        </div>
-      );
-
       const OriginPrice = showOriginPrice && (
-        <div class={bem('origin-price')}>
+        <span class={bem('origin-price')}>
           {slots['origin-price']
             ? slots['origin-price']()
             : `${props.currency} ${props.originPrice}`}
+        </span>
+      );
+      const Price = showPrice && (
+        <div class={bem('price')}>
+          {slots.price ? slots.price() : renderPriceText()}
+          {OriginPrice}
         </div>
       );
 
@@ -149,7 +148,6 @@ export default defineComponent({
         <div class={bem('bottom')}>
           {slots['price-top']?.()}
           {Price}
-          {OriginPrice}
           {Num}
           {slots.bottom?.()}
         </div>
