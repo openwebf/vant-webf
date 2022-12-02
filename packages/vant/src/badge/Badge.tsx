@@ -1,19 +1,19 @@
 import {
   computed,
-  defineComponent,
-  type PropType,
   type CSSProperties,
+  defineComponent,
   type ExtractPropTypes,
+  type PropType,
 } from 'vue';
 import {
-  isDef,
   addUnit,
-  isNumeric,
-  truthProp,
-  numericProp,
-  makeStringProp,
   createNamespace,
+  isDef,
+  isNumeric,
+  makeStringProp,
   type Numeric,
+  numericProp,
+  truthProp,
 } from '../utils';
 
 const [name, bem] = createNamespace('badge');
@@ -26,6 +26,8 @@ export type BadgePosition =
 
 const badgeProps = {
   dot: Boolean,
+  width: numericProp,
+  height: numericProp,
   max: numericProp,
   tag: makeStringProp<keyof HTMLElementTagNameMap>('div'),
   color: String,
@@ -48,7 +50,11 @@ export default defineComponent({
         return true;
       }
       const { content, showZero } = props;
-      return isDef(content) && content !== '' && (showZero || (content !== 0 && content !== '0'));
+      return (
+        isDef(content) &&
+        content !== '' &&
+        (showZero || (content !== 0 && content !== '0'))
+      );
     };
 
     const renderContent = () => {
@@ -70,6 +76,8 @@ export default defineComponent({
     const style = computed(() => {
       const style: CSSProperties = {
         background: props.color,
+        width: addUnit(props.width),
+        height: addUnit(props.height),
       };
 
       if (props.offset) {
