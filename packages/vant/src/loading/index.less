@@ -23,8 +23,7 @@
     height: var(--van-loading-spinner-size);
     max-height: 100%;
     vertical-align: middle;
-    animation: van-rotate var(--van-loading-spinner-animation-duration) linear
-      infinite;
+    animation: van-rotate 0.8s linear infinite;
 
     &--spinner {
       animation-timing-function: steps(12);
@@ -42,7 +41,7 @@
     width: 100%;
     height: 100%;
 
-    &::before {
+    &__before {
       display: block;
       width: 2px;
       height: 25%;

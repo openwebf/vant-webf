@@ -12,7 +12,11 @@ const [name, bem] = createNamespace('loading');
 
 const SpinIcon: JSX.Element[] = Array(12)
   .fill(null)
-  .map((_, index) => <i class={bem('line', String(index + 1))} />);
+  .map((_, index) => (
+    <div class={bem('line', String(index + 1))}>
+      <div class={bem('line__before')} />
+    </div>
+  ));
 
 const CircularIcon = (
   <svg class={bem('circular')} viewBox="25 25 50 50">
@@ -67,9 +71,9 @@ export default defineComponent({
           aria-live="polite"
           aria-busy={true}
         >
-          <span class={bem('spinner', type)} style={spinnerStyle.value}>
+          <div class={bem('spinner', type)} style={spinnerStyle.value}>
             {type === 'spinner' ? SpinIcon : CircularIcon}
-          </span>
+          </div>
           {renderText()}
         </div>
       );
