@@ -33,18 +33,18 @@
     background: var(--van-stepper-background-color);
     border: 0;
 
-    &::before {
-      width: 50%;
+    &__before {
+      width: 14px;
       height: 1px;
     }
 
-    &::after {
+    &__after {
       width: 1px;
-      height: 50%;
+      height: 14px;
     }
 
-    &::before,
-    &::after {
+    &__before,
+    &__after {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -64,7 +64,7 @@
     border-radius: var(--van-stepper-border-radius) 0 0
       var(--van-stepper-border-radius);
 
-    &::after {
+    &__after {
       display: none;
     }
   }
@@ -86,9 +86,9 @@
     text-align: center;
     vertical-align: middle;
     background: var(--van-stepper-background-color);
-    border: 0;
-    border-width: 1px 0;
-    border-radius: 0;
+    border: none;
+    //border-width: 1px 0;
+    //border-radius: 0;
     -webkit-appearance: none;
 
     &:disabled {

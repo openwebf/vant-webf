@@ -300,7 +300,9 @@ export default defineComponent({
           ]}
           aria-disabled={minusDisabled.value || undefined}
           {...createListeners('minus')}
-        />
+        >
+          <span class="van-stepper__minus__before"></span>
+        </button>
         <input
           v-show={props.showInput}
           ref={inputRef}
@@ -332,7 +334,10 @@ export default defineComponent({
           ]}
           aria-disabled={plusDisabled.value || undefined}
           {...createListeners('plus')}
-        />
+        >
+          <span class="van-stepper__plus__before"></span>
+          <span class="van-stepper__plus__after"></span>
+        </button>
       </div>
     );
   },
