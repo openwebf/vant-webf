@@ -197,9 +197,9 @@ export default defineComponent({
     });
 
     return () => (
-      <form class={bem()} onSubmit={onSubmit}>
+      <div class={bem()} onSubmit={onSubmit}>
         {slots.default?.()}
-      </form>
+      </div>
     );
   },
 });
