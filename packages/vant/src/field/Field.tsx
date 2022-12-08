@@ -1,52 +1,52 @@
 import {
+  computed,
+  defineComponent,
+  type ExtractPropTypes,
+  nextTick,
+  onMounted,
+  type PropType,
+  provide,
+  reactive,
   ref,
   watch,
-  provide,
-  computed,
-  nextTick,
-  reactive,
-  onMounted,
-  defineComponent,
-  type PropType,
-  type ExtractPropTypes,
 } from 'vue';
 
 // Utils
 import {
-  isDef,
-  extend,
   addUnit,
-  toArray,
-  FORM_KEY,
-  numericProp,
-  unknownProp,
-  resetScroll,
-  formatNumber,
-  preventDefault,
-  makeStringProp,
-  makeNumericProp,
-  createNamespace,
   type ComponentInstance,
+  createNamespace,
+  extend,
+  FORM_KEY,
+  formatNumber,
+  isDef,
+  makeNumericProp,
+  makeStringProp,
+  numericProp,
+  preventDefault,
+  resetScroll,
+  toArray,
+  unknownProp,
 } from '../utils';
 import {
   cutString,
-  runSyncRule,
   endComposing,
-  mapInputType,
-  isEmptyValue,
-  startComposing,
   getRuleMessage,
-  resizeTextarea,
   getStringLength,
+  isEmptyValue,
+  mapInputType,
+  resizeTextarea,
   runRuleValidator,
+  runSyncRule,
+  startComposing,
 } from './utils';
 import { cellSharedProps } from '../cell/Cell';
 
 // Composables
 import {
-  useParent,
-  useEventListener,
   CUSTOM_FIELD_INJECTION_KEY,
+  useEventListener,
+  useParent,
 } from '@vant/use';
 import { useId } from '../composables/use-id';
 import { useExpose } from '../composables/use-expose';
@@ -57,17 +57,17 @@ import { Cell } from '../cell';
 
 // Types
 import type {
-  FieldRule,
-  FieldType,
-  FieldExpose,
-  FieldTextAlign,
-  FieldClearTrigger,
-  FieldFormatTrigger,
-  FieldValidateError,
   FieldAutosizeConfig,
-  FieldValidationStatus,
-  FieldValidateTrigger,
+  FieldClearTrigger,
+  FieldExpose,
+  FieldFormatTrigger,
   FieldFormSharedProps,
+  FieldRule,
+  FieldTextAlign,
+  FieldType,
+  FieldValidateError,
+  FieldValidateTrigger,
+  FieldValidationStatus,
 } from './types';
 
 const [name, bem] = createNamespace('field');
@@ -409,6 +409,7 @@ export default defineComponent({
         getProp('inputAlign'),
         {
           error: showError.value,
+          disabled: getProp('disabled'),
           custom: !!slots.input,
           'min-height': props.type === 'textarea' && !props.autosize,
         },
@@ -444,7 +445,9 @@ export default defineComponent({
         onCompositionend: endComposing,
         onCompositionstart: startComposing,
       };
-
+      if (!getProp('readonly')) {
+        delete inputAttrs.readonly;
+      }
       if (props.type === 'textarea') {
         return <textarea {...inputAttrs} />;
       }
@@ -513,7 +516,7 @@ export default defineComponent({
       }
     };
 
-    const renderLabel = () => {
+    const renderLabel = (required: boolean) => {
       const colon = getProp('colon') ? ':' : '';
 
       if (slots.label) {
@@ -521,9 +524,14 @@ export default defineComponent({
       }
       if (props.label) {
         return (
-          <label id={`${id}-label`} for={getInputId()}>
-            {props.label + colon}
-          </label>
+          <div style={{ display: 'inline-block' }}>
+            {required && (
+              <span class="van-field__label--required__before">*</span>
+            )}
+            <label id={`${id}-label`} for={getInputId()}>
+              {props.label + colon}
+            </label>
+          </div>
         );
       }
     };
@@ -583,7 +591,7 @@ export default defineComponent({
     return () => {
       const disabled = getProp('disabled');
       const labelAlign = getProp('labelAlign');
-      const Label = renderLabel();
+      const Label = renderLabel(props.required);
       const LeftIcon = renderLeftIcon();
 
       return (

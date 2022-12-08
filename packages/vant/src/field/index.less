@@ -42,7 +42,7 @@
     }
 
     &--required {
-      &::before {
+      &__before {
         margin-right: 2px;
         color: var(--van-field-required-mark-color);
         content: '*';
@@ -81,11 +81,11 @@
     // https://github.com/vant-ui/vant/pull/9418
     user-select: auto;
 
-    &::placeholder {
+    &--placeholder {
       color: var(--van-field-placeholder-text-color);
     }
 
-    &:disabled {
+    &--disabled {
       color: var(--van-field-input-disabled-text-color);
       cursor: not-allowed;
       opacity: 1;
@@ -114,7 +114,7 @@
     }
 
     &--error,
-    &--error::placeholder {
+    &--error__placeholder {
       color: var(--van-field-input-error-text-color);
       -webkit-text-fill-color: currentColor;
     }
