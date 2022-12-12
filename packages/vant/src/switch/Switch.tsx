@@ -1,5 +1,5 @@
 import { defineComponent, type ExtractPropTypes } from 'vue';
-import { addUnit, numericProp, unknownProp, createNamespace } from '../utils';
+import { addUnit, createNamespace, numericProp, unknownProp } from '../utils';
 import { useCustomFieldValue } from '@vant/use';
 import { Loading } from '../loading';
 
@@ -75,7 +75,9 @@ export default defineComponent({
           aria-checked={checked}
           onClick={onClick}
         >
-          <div class={bem('node')}>{renderLoading()}</div>
+          <div style={{ fontSize: addUnit(size) }} class={bem('node')}>
+            {renderLoading()}
+          </div>
           {slots.background?.()}
         </div>
       );

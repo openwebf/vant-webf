@@ -17,7 +17,7 @@
 .van-switch {
   position: relative;
   display: inline-block;
-  box-sizing: content-box;
+  box-sizing: border-box;
   width: var(--van-switch-width);
   height: var(--van-switch-height);
   font-size: var(--van-switch-size);
@@ -34,7 +34,6 @@
     width: var(--van-switch-node-size);
     height: var(--van-switch-node-size);
     // https://github.com/vant-ui/vant/issues/9839
-    font-size: inherit;
     background: var(--van-switch-node-background-color);
     border-radius: 100%;
     box-shadow: var(--van-switch-node-box-shadow);
@@ -54,9 +53,7 @@
     background: var(--van-switch-on-background-color);
 
     .van-switch__node {
-      transform: translateX(
-        calc(var(--van-switch-width) - var(--van-switch-node-size))
-      );
+      transform: translateX(1em);
     }
 
     .van-switch__loading {
