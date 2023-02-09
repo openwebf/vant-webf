@@ -15,6 +15,7 @@ import {
   isDef,
   unknownProp,
   numericProp,
+  addUnit,
   makeStringProp,
   makeNumberProp,
   createNamespace,
@@ -46,6 +47,8 @@ const toastProps = {
   show: Boolean,
   type: makeStringProp<ToastType>('text'),
   overlay: Boolean,
+  width: numericProp,
+  height: numericProp,
   message: numericProp,
   iconSize: numericProp,
   duration: makeNumberProp(2000),
@@ -144,21 +147,25 @@ export default defineComponent({
     onMounted(toggleClickable);
     onUnmounted(toggleClickable);
 
-    return () => (
-      <Popup
-        class={[
-          bem([props.position, { [props.type]: !props.icon }]),
-          props.className,
-        ]}
-        lockScroll={false}
-        onClick={onClick}
-        onClosed={clearTimer}
-        onUpdate:show={updateShow}
-        {...pick(props, popupInheritProps)}
-      >
-        {renderIcon()}
-        {renderMessage()}
-      </Popup>
-    );
+    return () => {
+      const { width, height } = props;
+      return (
+        <Popup
+          style={{ width: addUnit(width), height: addUnit(height) }}
+          class={[
+            bem([props.position, { [props.type]: !props.icon }]),
+            props.className,
+          ]}
+          lockScroll={false}
+          onClick={onClick}
+          onClosed={clearTimer}
+          onUpdate:show={updateShow}
+          {...pick(props, popupInheritProps)}
+        >
+          {renderIcon()}
+          {renderMessage()}
+        </Popup>
+      );
+    };
   },
 });
