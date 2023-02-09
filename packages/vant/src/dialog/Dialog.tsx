@@ -46,6 +46,7 @@ const dialogProps = extend({}, popupSharedProps, {
   title: String,
   theme: String as PropType<DialogTheme>,
   width: numericProp,
+  height: numericProp,
   message: [String, Function] as PropType<DialogMessage>,
   callback: Function as PropType<(action?: DialogAction) => void>,
   allowHtml: Boolean,
@@ -254,13 +255,13 @@ export default defineComponent({
     };
 
     return () => {
-      const { width, title, theme, message, className } = props;
+      const { width, height, title, theme, message, className } = props;
       return (
         <Popup
           ref={root}
           role="dialog"
           class={[bem([theme]), className]}
-          style={{ width: addUnit(width) }}
+          style={{ width: addUnit(width), height: addUnit(height) }}
           tabindex={0}
           aria-labelledby={title || message}
           onKeydown={onKeydown}
