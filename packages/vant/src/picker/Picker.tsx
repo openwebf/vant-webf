@@ -372,7 +372,9 @@ export default defineComponent({
           <div
             class={[BORDER_UNSET_TOP_BOTTOM, bem('frame')]}
             style={frameStyle}
-          />,
+          >
+            <span class={bem('frame__after')}></span>
+          </div>,
         ];
       }
     };
