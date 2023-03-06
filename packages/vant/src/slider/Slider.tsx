@@ -296,6 +296,7 @@ export default defineComponent({
           ref={slider}
           role="slider"
           class={getButtonClassName(index)}
+          style={{ width: props.buttonSize, height: props.buttonSize }}
           tabindex={props.disabled ? undefined : 0}
           aria-valuemin={props.min}
           aria-valuenow={current}
