@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should re-calc width if showing pivot dynamically 1`] = `
+<div class="van-progress">
+  <span class="van-progress__portion"
+        style="width: 100%;"
+  >
+  </span>
+</div>
+`;
+
+exports[`should re-calc width if showing pivot dynamically 2`] = `
+<div class="van-progress">
+  <span class="van-progress__portion"
+        style="width: 100%;"
+  >
+  </span>
+  <span style="left: 100%; transform: translate(-100%,-50%);"
+        class="van-progress__pivot"
+  >
+    test
+  </span>
+</div>
+`;

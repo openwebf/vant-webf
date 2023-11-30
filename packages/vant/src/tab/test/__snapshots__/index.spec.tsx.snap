@@ -1,0 +1,603 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should allow to disable lazy-render prop 1`] = `
+<div class="van-tabs__content">
+  <div id="van-tab"
+       role="tabpanel"
+       class="van-tab__panel"
+       tabindex="-1"
+       aria-labelledby="van-tabs-0"
+       style="display: none;"
+  >
+  </div>
+  <div id="van-tab"
+       role="tabpanel"
+       class="van-tab__panel"
+       tabindex="-1"
+       aria-labelledby="van-tabs-1"
+       style="display: none;"
+  >
+  </div>
+</div>
+`;
+
+exports[`should allow to disable lazy-render prop 2`] = `
+<div class="van-tabs__content">
+  <div id="van-tab"
+       role="tabpanel"
+       class="van-tab__panel"
+       tabindex="0"
+       aria-labelledby="van-tabs-0"
+       style
+  >
+    Text
+  </div>
+  <div id="van-tab"
+       role="tabpanel"
+       class="van-tab__panel"
+       tabindex="-1"
+       aria-labelledby="van-tabs-1"
+       style="display: none;"
+  >
+    Text
+  </div>
+</div>
+`;
+
+exports[`should allow to set name prop 1`] = `
+<div class="van-tabs van-tabs--line">
+  <div class="van-tabs__wrap">
+    <div role="tablist"
+         class="van-tabs__nav van-tabs__nav--line"
+         aria-orientation="horizontal"
+    >
+      <div id="van-tabs-0"
+           role="tab"
+           class="van-tab van-tab--line van-tab--active"
+           tabindex="0"
+           aria-selected="true"
+           aria-controls="van-tab"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title1
+        </span>
+      </div>
+      <div id="van-tabs-1"
+           role="tab"
+           class="van-tab van-tab--line"
+           tabindex="-1"
+           aria-selected="false"
+           aria-controls="van-tab"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title2
+        </span>
+      </div>
+      <div id="van-tabs-2"
+           role="tab"
+           class="van-tab van-tab--line van-tab--disabled"
+           aria-selected="false"
+           aria-disabled="true"
+           aria-controls="van-tab"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title3
+        </span>
+      </div>
+      <div class="van-tabs__line"
+           style="transform: translateX(50px) translateX(-50%);"
+      >
+      </div>
+    </div>
+  </div>
+  <div class="van-tabs__content">
+    <div id="van-tab"
+         role="tabpanel"
+         class="van-tab__panel"
+         tabindex="0"
+         aria-labelledby="van-tabs-0"
+         style
+    >
+      Text
+    </div>
+    <div id="van-tab"
+         role="tabpanel"
+         class="van-tab__panel"
+         tabindex="-1"
+         aria-labelledby="van-tabs-1"
+         style="display: none;"
+    >
+    </div>
+    <div id="van-tab"
+         role="tabpanel"
+         class="van-tab__panel"
+         tabindex="-1"
+         aria-labelledby="van-tabs-2"
+         style="display: none;"
+    >
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should emit rendered event after tab is rendered 1`] = `
+<div id="van-tab"
+     role="tabpanel"
+     class="van-tab__panel"
+     tabindex="0"
+     aria-labelledby="van-tabs-0"
+     style
+>
+  Text
+</div>
+`;
+
+exports[`should not render empty tab 1`] = `
+<div class="van-tabs__content">
+</div>
+`;
+
+exports[`should render badge prop correctly 1`] = `
+<div id="van-tabs-0"
+     role="tab"
+     class="van-tab van-tab--line van-tab--active"
+     tabindex="0"
+     aria-selected="true"
+     aria-controls="van-tab"
+>
+  <div class="van-badge__wrapper">
+    <span class="van-tab__text van-tab__text--ellipsis">
+    </span>
+    <div class="van-badge van-badge--top-right van-badge--fixed">
+      10
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should render nav-left、nav-right slot correctly 1`] = `
+<div class="van-tabs__wrap">
+  <div role="tablist"
+       class="van-tabs__nav van-tabs__nav--line"
+       aria-orientation="horizontal"
+  >
+    Custom nav left
+    <div id="van-tabs-0"
+         role="tab"
+         class="van-tab van-tab--line van-tab--active"
+         tabindex="0"
+         aria-selected="true"
+         aria-controls="van-tab"
+    >
+      <span class="van-tab__text van-tab__text--ellipsis">
+        Title
+      </span>
+    </div>
+    <div class="van-tabs__line"
+         style="transform: translateX(50px) translateX(-50%);"
+    >
+    </div>
+    Custom nav right
+  </div>
+</div>
+`;
+
+exports[`should switch tab after click the tab title 1`] = `
+<div class="van-tabs van-tabs--line">
+  <div class="van-tabs__wrap">
+    <div role="tablist"
+         class="van-tabs__nav van-tabs__nav--line"
+         aria-orientation="horizontal"
+    >
+      <div id="van-tabs-0"
+           role="tab"
+           class="van-tab van-tab--line van-tab--active"
+           tabindex="0"
+           aria-selected="true"
+           aria-controls="van-tab"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title1
+        </span>
+      </div>
+      <div id="van-tabs-1"
+           role="tab"
+           class="van-tab van-tab--line"
+           tabindex="-1"
+           aria-selected="false"
+           aria-controls="van-tab"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title2
+        </span>
+      </div>
+      <div id="van-tabs-2"
+           role="tab"
+           class="van-tab van-tab--line van-tab--disabled"
+           aria-selected="false"
+           aria-disabled="true"
+           aria-controls="van-tab"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title3
+        </span>
+      </div>
+      <div class="van-tabs__line"
+           style="transform: translateX(50px) translateX(-50%);"
+      >
+      </div>
+    </div>
+  </div>
+  <div class="van-tabs__content">
+    <div id="van-tab"
+         role="tabpanel"
+         class="van-tab__panel"
+         tabindex="0"
+         aria-labelledby="van-tabs-0"
+         style
+    >
+      Text
+    </div>
+    <div id="van-tab"
+         role="tabpanel"
+         class="van-tab__panel"
+         tabindex="-1"
+         aria-labelledby="van-tabs-1"
+         style="display: none;"
+    >
+    </div>
+    <div id="van-tab"
+         role="tabpanel"
+         class="van-tab__panel"
+         tabindex="-1"
+         aria-labelledby="van-tabs-2"
+         style="display: none;"
+    >
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should switch tab after click the tab title 2`] = `
+<div class="van-tabs van-tabs--line">
+  <div class="van-tabs__wrap">
+    <div role="tablist"
+         class="van-tabs__nav van-tabs__nav--line"
+         aria-orientation="horizontal"
+    >
+      <div id="van-tabs-0"
+           role="tab"
+           class="van-tab van-tab--line"
+           tabindex="-1"
+           aria-selected="false"
+           aria-controls="van-tab"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title1
+        </span>
+      </div>
+      <div id="van-tabs-1"
+           role="tab"
+           class="van-tab van-tab--line van-tab--active"
+           tabindex="0"
+           aria-selected="true"
+           aria-controls="van-tab"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title2
+        </span>
+      </div>
+      <div id="van-tabs-2"
+           role="tab"
+           class="van-tab van-tab--line van-tab--disabled"
+           aria-selected="false"
+           aria-disabled="true"
+           aria-controls="van-tab"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title3
+        </span>
+      </div>
+      <div class="van-tabs__line"
+           style="transform: translateX(50px) translateX(-50%); transition-duration: 0.3s;"
+      >
+      </div>
+    </div>
+  </div>
+  <div class="van-tabs__content">
+    <div id="van-tab"
+         role="tabpanel"
+         class="van-tab__panel"
+         tabindex="-1"
+         aria-labelledby="van-tabs-0"
+         style="display: none;"
+    >
+      Text
+    </div>
+    <div id="van-tab"
+         role="tabpanel"
+         class="van-tab__panel"
+         tabindex="0"
+         aria-labelledby="van-tabs-1"
+         style
+    >
+      Text
+    </div>
+    <div id="van-tab"
+         role="tabpanel"
+         class="van-tab__panel"
+         tabindex="-1"
+         aria-labelledby="van-tabs-2"
+         style="display: none;"
+    >
+    </div>
+  </div>
+</div>
+`;
+
+exports[`swipe switch tab after swiping tab content 1`] = `
+<div class="van-tabs van-tabs--line">
+  <div class="van-tabs__wrap">
+    <div role="tablist"
+         class="van-tabs__nav van-tabs__nav--line"
+         aria-orientation="horizontal"
+    >
+      <div id="van-tabs-0"
+           role="tab"
+           class="van-tab van-tab--line van-tab--active"
+           tabindex="0"
+           aria-selected="true"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title1
+        </span>
+      </div>
+      <div id="van-tabs-1"
+           role="tab"
+           class="van-tab van-tab--line"
+           tabindex="-1"
+           aria-selected="false"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title2
+        </span>
+      </div>
+      <div id="van-tabs-2"
+           role="tab"
+           class="van-tab van-tab--line van-tab--disabled"
+           aria-selected="false"
+           aria-disabled="true"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title3
+        </span>
+      </div>
+      <div class="van-tabs__line"
+           style="transform: translateX(50px) translateX(-50%);"
+      >
+      </div>
+    </div>
+  </div>
+  <div class="van-tabs__content van-tabs__content--animated">
+    <div class="van-swipe van-tabs__track">
+      <div style="transition-duration: 0ms; transform: translateX(0px); width: 300px;"
+           class="van-swipe__track"
+      >
+        <div class="van-swipe-item van-tab__panel-wrapper"
+             id="van-tab"
+             role="tabpanel"
+             tabindex="0"
+             aria-hidden="false"
+             aria-labelledby="van-tabs-0"
+             style="width: 100px;"
+        >
+          <div class="van-tab__panel">
+            Text
+          </div>
+        </div>
+        <div class="van-swipe-item van-tab__panel-wrapper van-tab__panel-wrapper--inactive"
+             id="van-tab"
+             role="tabpanel"
+             tabindex="-1"
+             aria-hidden="true"
+             aria-labelledby="van-tabs-1"
+             style="width: 100px;"
+        >
+          <div class="van-tab__panel">
+            Text
+          </div>
+        </div>
+        <div class="van-swipe-item van-tab__panel-wrapper van-tab__panel-wrapper--inactive"
+             id="van-tab"
+             role="tabpanel"
+             tabindex="-1"
+             aria-hidden="true"
+             aria-labelledby="van-tabs-2"
+             style="width: 100px;"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`swipe switch tab after swiping tab content 2`] = `
+<div class="van-tabs van-tabs--line">
+  <div class="van-tabs__wrap">
+    <div role="tablist"
+         class="van-tabs__nav van-tabs__nav--line"
+         aria-orientation="horizontal"
+    >
+      <div id="van-tabs-0"
+           role="tab"
+           class="van-tab van-tab--line"
+           tabindex="-1"
+           aria-selected="false"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title1
+        </span>
+      </div>
+      <div id="van-tabs-1"
+           role="tab"
+           class="van-tab van-tab--line van-tab--active"
+           tabindex="0"
+           aria-selected="true"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title2
+        </span>
+      </div>
+      <div id="van-tabs-2"
+           role="tab"
+           class="van-tab van-tab--line van-tab--disabled"
+           aria-selected="false"
+           aria-disabled="true"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title3
+        </span>
+      </div>
+      <div class="van-tabs__line"
+           style="transform: translateX(50px) translateX(-50%);"
+      >
+      </div>
+    </div>
+  </div>
+  <div class="van-tabs__content van-tabs__content--animated">
+    <div class="van-swipe van-tabs__track">
+      <div style="transition-duration: 300ms; transform: translateX(-100px); width: 300px;"
+           class="van-swipe__track"
+      >
+        <div class="van-swipe-item van-tab__panel-wrapper"
+             id="van-tab"
+             role="tabpanel"
+             tabindex="-1"
+             aria-hidden="true"
+             aria-labelledby="van-tabs-0"
+             style="width: 100px;"
+        >
+          <div class="van-tab__panel">
+            Text
+          </div>
+        </div>
+        <div class="van-swipe-item van-tab__panel-wrapper"
+             id="van-tab"
+             role="tabpanel"
+             tabindex="0"
+             aria-hidden="false"
+             aria-labelledby="van-tabs-1"
+             style="width: 100px;"
+        >
+          <div class="van-tab__panel">
+            Text
+          </div>
+        </div>
+        <div class="van-swipe-item van-tab__panel-wrapper van-tab__panel-wrapper--inactive"
+             id="van-tab"
+             role="tabpanel"
+             tabindex="-1"
+             aria-hidden="true"
+             aria-labelledby="van-tabs-2"
+             style="width: 100px;"
+        >
+          <div class="van-tab__panel">
+            Text
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`swipe switch tab after swiping tab content 3`] = `
+<div class="van-tabs van-tabs--line">
+  <div class="van-tabs__wrap">
+    <div role="tablist"
+         class="van-tabs__nav van-tabs__nav--line"
+         aria-orientation="horizontal"
+    >
+      <div id="van-tabs-0"
+           role="tab"
+           class="van-tab van-tab--line"
+           tabindex="-1"
+           aria-selected="false"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title1
+        </span>
+      </div>
+      <div id="van-tabs-1"
+           role="tab"
+           class="van-tab van-tab--line van-tab--active"
+           tabindex="0"
+           aria-selected="true"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title2
+        </span>
+      </div>
+      <div id="van-tabs-2"
+           role="tab"
+           class="van-tab van-tab--line van-tab--disabled"
+           aria-selected="false"
+           aria-disabled="true"
+      >
+        <span class="van-tab__text van-tab__text--ellipsis">
+          title3
+        </span>
+      </div>
+      <div class="van-tabs__line"
+           style="transform: translateX(50px) translateX(-50%); transition-duration: 0.3s;"
+      >
+      </div>
+    </div>
+  </div>
+  <div class="van-tabs__content van-tabs__content--animated">
+    <div class="van-swipe van-tabs__track">
+      <div style="transition-duration: 300ms; transform: translateX(-200px); width: 300px;"
+           class="van-swipe__track"
+      >
+        <div class="van-swipe-item van-tab__panel-wrapper"
+             id="van-tab"
+             role="tabpanel"
+             tabindex="-1"
+             aria-hidden="true"
+             aria-labelledby="van-tabs-0"
+             style="width: 100px;"
+        >
+          <div class="van-tab__panel">
+            Text
+          </div>
+        </div>
+        <div class="van-swipe-item van-tab__panel-wrapper"
+             id="van-tab"
+             role="tabpanel"
+             tabindex="0"
+             aria-hidden="false"
+             aria-labelledby="van-tabs-1"
+             style="width: 100px;"
+        >
+          <div class="van-tab__panel">
+            Text
+          </div>
+        </div>
+        <div class="van-swipe-item van-tab__panel-wrapper van-tab__panel-wrapper--inactive"
+             id="van-tab"
+             role="tabpanel"
+             tabindex="-1"
+             aria-hidden="true"
+             aria-labelledby="van-tabs-2"
+             style="width: 100px;"
+        >
+          <div class="van-tab__panel">
+            Text
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

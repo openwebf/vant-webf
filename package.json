@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "pnpm --dir ./packages/vant dev",
+    "lint": "pnpm --dir ./packages/vant lint",
+    "test": "pnpm --dir ./packages/vant test",
+    "test:watch": "pnpm --dir ./packages/vant test:watch",
+    "build": "pnpm --dir ./packages/vant build",
+    "build:site": "pnpm --dir ./packages/vant build:site"
+  },
+  "nano-staged": {
+    "*.md": "prettier --write",
+    "*.{ts,tsx,js,vue,less}": "prettier --write",
+    "*.{ts,tsx,js,vue}": "eslint --fix"
+  },
+  "packageManager": "pnpm@7.11.0",
+  "devDependencies": {
+    "@vant/cli": "workspace:*",
+    "@vant/eslint-config": "workspace:*",
+    "eslint": "^8.23.0",
+    "husky": "^8.0.1",
+    "nano-staged": "^0.8.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "@types/react",
+        "react",
+        "react-dom"
+      ]
+    }
+  }
+}
