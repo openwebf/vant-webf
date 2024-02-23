@@ -296,7 +296,6 @@ export default defineComponent({
           ref={slider}
           role="slider"
           class={getButtonClassName(index)}
-          style={{ width: props.buttonSize, height: props.buttonSize }}
           tabindex={props.disabled ? undefined : 0}
           aria-valuemin={props.min}
           aria-valuenow={current}
@@ -304,7 +303,7 @@ export default defineComponent({
           aria-disabled={props.disabled || undefined}
           aria-readonly={props.readonly || undefined}
           aria-orientation={props.vertical ? 'vertical' : 'horizontal'}
-          onTouchstartPassive={(event) => {
+          onTouchstartPassive={(event: TouchEvent) => {
             if (typeof index === 'number') {
               // save index of current button
               buttonIndex = index;
